@@ -1,0 +1,8 @@
+﻿body {
+    background: #CCCCCC;
+    color: #EEEEEE;
+}
+
+.card-text, .text-secondary{
+    color: #CCCCCC !important;
+}

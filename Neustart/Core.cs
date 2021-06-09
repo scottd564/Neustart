@@ -19,6 +19,7 @@ namespace Neustart
     class Core
     {
         public static readonly string Version = Assembly.GetCallingAssembly().GetName().Version.ToString();
+        public static readonly Config Cfg = Config.Load();
 
         public static List<ProcessPriorityClass> Priorities = new List<ProcessPriorityClass>
         {
@@ -67,6 +68,8 @@ namespace Neustart
 
             if (args.Contains<string>("-debug"))
                 Debug.Start();
+
+            APIServer.Nancy.Start();
 
             Application.SetCompatibleTextRenderingDefault(false);
 

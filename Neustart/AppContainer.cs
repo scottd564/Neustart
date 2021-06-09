@@ -15,7 +15,8 @@ namespace Neustart
         public static event EventHandler OnLoadCompleted;
 
         private List<AppConfig> m_ConfigContainer;
-        private List<App> m_AppContainer = new List<App>();
+       
+        public List<App> m_AppContainer = new List<App>();
         private System.Timers.Timer m_SaveTimer;
 
         private string configPath = "Apps.json";
@@ -24,12 +25,13 @@ namespace Neustart
         {
             Debug.Log("App container created");
 
-            LoadConfig();
+            LoadAppConfig();
         }
 
-        private bool LoadConfig()
+        private bool LoadAppConfig()
         {
             Debug.Log("Loading configurations");
+
             string configString = File.Exists(configPath) ? File.ReadAllText(configPath) : "[]";
 
             try
@@ -55,7 +57,7 @@ namespace Neustart
 
                     Debug.Warning("Configuration file has been deleted. Trying again..");
 
-                    return LoadConfig();
+                    return LoadAppConfig();
                 } else
                 {
                     Debug.Error("Cannot proceed.");
